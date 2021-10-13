@@ -28,6 +28,7 @@ macro_rules! math_fn {
 }
 
 math_fn!(sum,ctx,msg,+,"+",args);
+
 math_fn!(sub,ctx,msg,-,"-",args);
 math_fn!(mul,ctx,msg,*,"*",args);
 math_fn!(div,ctx,msg,/,":",args);
