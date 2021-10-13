@@ -1,4 +1,4 @@
-use serenity::{http::Http, model::prelude::*, prelude::*};
+use serenity::{model::prelude::*, prelude::*};
 
 pub struct Handler;
 #[serenity::async_trait]
@@ -32,15 +32,7 @@ impl EventHandler for Handler {
     //         // let _ = msg.channel_id.say(&context.http, a + b).await;
     //     }
     // }
-    async fn ready(&self, _: Context, _ready: Ready) {
-        let user = CurrentUser::default();
-        let http = Http::default();
-        if let Ok(guilds) = user.guilds(&http).await {
-            for (i, guild) in guilds.into_iter().enumerate() {
-                println!("{} : {}", i, guild.name);
-            }
-        }
-
-        // println!("{} now ready", ready.user.guilds());
+    async fn ready(&self, _: Context, ready: Ready) {
+        println!("bot : {} ready", ready.user.name);
     }
 }
