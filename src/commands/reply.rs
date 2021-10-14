@@ -1,12 +1,14 @@
 use crate::*;
 use serenity::{
     framework::standard::{
-        macros::{command, group},
-        Args, CommandResult,
+        macros::{command, group, help},
+        Args, CommandGroup, CommandResult, HelpOptions, *,
     },
     model::channel::Message,
+    model::id::UserId,
     prelude::*,
 };
+use std::collections::HashSet;
 
 mk_group!(General, ping, say);
 
@@ -19,5 +21,18 @@ cmd_ctx_msg!(ping, ctx, msg, {
 cmd_ctx_msg!(say, ctx, msg, args, {
     println!("user : {}", msg.author);
     println!("args :{:?}", args);
-    msg.channel_id.say(&ctx.http, "<3").await?;
+    say!(msg, ctx, "<3");
 });
+
+#[help]
+async fn help(
+    context: &Context,
+    msg: &Message,
+    args: Args,
+    help_options: &'static HelpOptions,
+    groups: &[&'static CommandGroup],
+    owners: HashSet<UserId>,
+) -> CommandResult {
+    let _ = help_commands::with_embeds(context, msg, args, help_options, groups, owners).await;
+    Ok(())
+}

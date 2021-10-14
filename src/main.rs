@@ -2,8 +2,10 @@ mod commands;
 mod events;
 mod server;
 use commands::math::*;
+use commands::music::*;
 use commands::reply::*;
 use serenity::{framework::standard::StandardFramework, http::Http, Client};
+use songbird::SerenityInit;
 use std::{collections::HashSet, thread};
 // Start ////////////////////////////////////////////////////////////////////
 
@@ -26,11 +28,15 @@ async fn main() {
     let framework = StandardFramework::new()
         .configure(|c| c.owners(owners).prefix("!"))
         .group(&MATH_GROUP)
+        .help(&HELP)
+        .group(&MUSIC_GROUP)
         .group(&GENERAL_GROUP);
 
     let mut client = Client::builder(&token)
         .framework(framework)
         .event_handler(events::Handler)
+        .register_songbird()
+        .application_id(897082403003187210)
         .await
         .expect("error creating client");
 
