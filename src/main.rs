@@ -1,6 +1,6 @@
 mod commands;
 mod events;
-mod server;
+// mod server;
 use commands::math::*;
 use commands::music::*;
 use commands::reply::*;
@@ -12,7 +12,7 @@ use std::{collections::HashSet, thread};
 #[tokio::main]
 async fn main() {
     let token = std::env::var("DISCORD_TOKEN").unwrap_or("none".to_string());
-    thread::spawn(|| server::server());
+    // thread::spawn(|| server::server());
 
     let http = Http::new_with_token(&token);
 

@@ -1,0 +1,14 @@
+
+# Pi 0/1
+# [target.arm-unknown-linux-gnueabihf]
+# linker = "arm-linux-gnueabihf-gcc"
+# [build]
+# target = "armv7-unknown-linux-gnueabihf"
+# [target.armv7-unknown-linux-gnueabihf]
+# linker = "arm-rpi-linux-gnueabihf-gcc"
+# rustflags = ["-C", "linker=arm-rpi-linux-gnueabihf-gcc"]
+# Pi 2/3/4
+# [target.armv7-unknown-linux-gnueabihf]
+# linker = "/home/datom/src/toolchains/armv7-rpi2-linux-gnueabihf/bin/ld"
+# (Optional) Set default target for cargo build
+# target = "armv7-unknown-linux-gnueabihf"
