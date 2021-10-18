@@ -1,0 +1,7 @@
+ name: Rust Cargo Deb Package Build (armv7, Debian)
+  # You may pin to the exact commit or the version.
+  # uses: ebbflow-io/cargo-deb-armv7-debian@bec0ba8f9a4bea7af94001bd9d2fc8e52d15ee90
+  uses: ebbflow-io/cargo-deb-armv7-debian@1.47.0-1
+  with:
+    # build command
+    cmd: # default is cargo deb --target=armv7-unknown-linux-musleabihf
